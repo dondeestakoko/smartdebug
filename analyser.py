@@ -6,6 +6,7 @@ import requests
 from typing import Tuple
 api_key = os.getenv("GROQ_API_KEY")
 
+
 prompt_path = "prompt.txt"
 # ------------------------------------------------------------
 # Charger le prompt depuis un fichier
