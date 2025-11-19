@@ -105,16 +105,22 @@ Erreurs (stderr) :
         response_json = call_agent(api_key, system_prompt, user_message)
         print("✅ Réponse JSON reçue de l'agent Groq.")
         return response_json
+
     except Exception as e:
         print(f"❌ Erreur lors de l'appel à Groq ou lors du traitement de la réponse : {e}")
-        # Renvoyer une structure d'erreur qui respecte le format demandé pour l'échec
+
+    # Retour au NOUVEAU format JSON
         return {
             "status": "invalid",
-            "line_error": "N/A",
-            "explanation": f"Échec de l'appel à l'API Groq ou réponse non-JSON : {str(e)}",
-            "fixed_line": "N/A",
+            "errors": [
+                {
+                    "line_error": "N/A",
+                    "explanation": f"Échec de l'appel à l'API Groq ou réponse non-JSON : {str(e)}",
+                    "fixed_line": "N/A"
+                }
+            ],
             "summary": "Échec de l'analyse."
-        }
+    }
 
 
 # ------------------------------------------------------------
